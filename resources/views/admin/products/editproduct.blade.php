@@ -1,21 +1,7 @@
 @extends('sitedesign.adminlayout.admin_design')
 
 @section('maincont')
-        @if(session()->has("message_add"))
-            <div id="gritter-notice-wrapper">
-                <div id="gritter-item-1" class="gritter-item-wrapper" style="opacity: 0.7;">
-                   <div class="gritter-top"></div>
-                    <div class="gritter-item" style="background:green">
-                     <div class="gritter-with-image">
-                        <span class="gritter-title">{{session()->get("message_add")}}</span>
-                      </div>
-                    <div style="clear:both"></div>
-                  </div>
-                <div class="gritter-bottom"></div>
-              </div>
-            </div>    
-        @endif
-
+        
 <div id="content">
   <div id="content-header">
     <div id="breadcrumb"> <a href="{{ url('/admin/dashboard')}}" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="{{ url('/admin/editproduct/'.$productsdetail->id) }}" class="current">Products</a><a href="{{ url('/admin/editproduct/'.$productsdetail->id) }}" class="current">Edit Products</a> </div>
@@ -30,7 +16,7 @@
             <h5>Edit Products</h5>
           </div>
           <div class="widget-content nopadding">
-            <form enctype="multipart/form-data" class="form-horizontal" method="post" action="{{ url('/admin/editproduct'.$productsdetail->id) }}" name="edit_product" id="edit_product" novalidate="novalidate">
+            <form enctype="multipart/form-data" class="form-horizontal" method="post" action="{{ url('/admin/editproduct/'.$productsdetail->id) }}" name="edit_product" id="edit_product" novalidate="novalidate">
               {{ csrf_field()}}
               <div class="control-group">
                 <label class="control-label">Under Category</label>
@@ -86,6 +72,8 @@
                 <label class="control-label">image</label>
                 <div class="controls">
                   <input type="file" name="image" id="image">
+                  <input type="hidden" name="current_image" value="{{ $productsdetail->image }}">
+                   <img style="width: 40px;" src="{{asset('/image/bachend_image/product/small/'.$productsdetail->image)}}"> | <a href="{{ url('/admin/delproductimage/'.$productsdetail->id) }}"> Delete </a>
                 </div>
               </div>
 

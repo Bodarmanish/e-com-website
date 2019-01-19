@@ -1,4 +1,4 @@
-
+//gritter message
 $(document).ready(function () {          
 
             setTimeout(function() {
@@ -7,9 +7,7 @@ $(document).ready(function () {
 });
 
 
-
-
-
+//change user password
 $(document).ready(function(){
 	$("#current_Pwd").focusout(function(){
 		var current_Pwd = $("#current_Pwd").val();
@@ -122,9 +120,41 @@ $("#add_product").validate({
 			category_id:{
 							required:true
 						},
-			image:{
+				
+		},
+		errorClass: "help-inline",
+		errorElement: "span",
+		highlight:function(element, errorClass, validClass) {
+			$(element).parents('.control-group').addClass('error');
+		},
+		unhighlight: function(element, errorClass, validClass) {
+			$(element).parents('.control-group').removeClass('error');
+			$(element).parents('.control-group').addClass('success');
+		}
+	});
+//add product validattion	
+$("#edit_product").validate({
+		rules:{
+			name:{
+					required:true
+				 },
+			code:{
 					required:true,
-				}	
+				 },
+			color:{
+					required:true,
+				  },
+			des:{
+					required:true,
+				},
+			price:{
+					required:true,
+					number:true,
+				},
+			category_id:{
+							required:true
+						},
+				
 		},
 		errorClass: "help-inline",
 		errorElement: "span",
@@ -222,6 +252,13 @@ $("#add_product").validate({
 
 	$(".delete").click(function(){
 		if(confirm('Are you sure you want to delete this category?'))
+		{
+			return true;
+		}
+		return false;
+	});
+	$(".delete1").click(function(){
+		if(confirm('Are you sure you want to delete this product?'))
 		{
 			return true;
 		}

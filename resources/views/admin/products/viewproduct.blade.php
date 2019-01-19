@@ -12,17 +12,34 @@
    <div id="breadcrumb"> <a href="{{ url('/admin/dashboard')}}" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a><a href="{{ url('/admin/viewproduct') }}" class="current">Product</a><a href="{{ url('/admin/viewproduct') }}" class="current">view Product</a> </div>
     <h1>Product</h1>
     
-                        @if(session()->has("message_error"))
-                                 <div  class="alert alert-success fade in" style="margin-bottom: 00px;">
-                                    <strong>{{session()->get("message_error")}}</strong> 
-
-                                 </div>
-                            
-                                <script>
-                                $(".alert").fadeTo(2000,500).slideUp(500,function(){$(".alert").slideUp(500);});
-                                </script>
-                        @endif
-                     
+        @if(session()->has("message_edit"))
+            <div id="gritter-notice-wrapper">
+                <div id="gritter-item-1" class="gritter-item-wrapper" style="opacity: 0.7;">
+                   <div class="gritter-top"></div>
+                    <div class="gritter-item" style="background:green">
+                     <div class="gritter-with-image">
+                        <span class="gritter-title">{{session()->get("message_edit")}}</span>
+                      </div>
+                    <div style="clear:both"></div>
+                  </div>
+                <div class="gritter-bottom"></div>
+              </div>
+            </div>    
+        @endif
+        @if(session()->has("message_delete"))
+            <div id="gritter-notice-wrapper">
+                <div id="gritter-item-1" class="gritter-item-wrapper" style="opacity: 0.7;">
+                   <div class="gritter-top"></div>
+                    <div class="gritter-item" style="background:red">
+                     <div class="gritter-with-image">
+                        <span class="gritter-title">{{session()->get("message_delete")}}</span>
+                      </div>
+                    <div style="clear:both"></div>
+                  </div>
+                <div class="gritter-bottom"></div>
+              </div>
+            </div>    
+        @endif
   </div>
   <div class="container-fluid">
   
@@ -70,7 +87,7 @@
                         @endif
                        </td>
 
-                      <td class="center"><div style="float:left; " class="fr"> <a href="#myModal{{$product->id}}" data-toggle="modal" class="btn btn-success btn-mini">View</a> <a href="{{'/admin/editproduct/'.$product->id }}" class="btn btn-primary btn-mini">Edit</a> <span class="delete"><a  href="{{'/admin/deleteproduct/'.$product->id }}" class="btn btn-danger btn-mini">Delete</a></span></div>
+                      <td class="center"><div style="float:left; " class="fr"> <a href="#myModal{{$product->id}}" data-toggle="modal" class="btn btn-success btn-mini">View</a> <a href="{{'/admin/editproduct/'.$product->id }}" class="btn btn-primary btn-mini">Edit</a> <span class="delete1"><a  href="{{'/admin/deleteproduct/'.$product->id }}" class="btn btn-danger btn-mini">Delete</a></span></div>
                       </td>   
                     </tr>
 
