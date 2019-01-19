@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Manish</title>
+    <title>Admin login</title>
     <meta charset="UTF-8">
     <style>
        
@@ -21,6 +21,8 @@
     <link rel="icon" type="image/png" href="{{asset('login172/images/icons/favicon.ico"')}}/>
 
     <link rel="stylesheet" type="text/css" href="{{asset('login172/vendor/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/backend_css/jquery.gritter.css') }}" />
+
 
     <link rel="stylesheet" type="text/css" href="{{asset('login172/fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
 
@@ -45,25 +47,21 @@
 
 </head>
 <body>
-                    <div class="message1">
-                        @if(session()->has("flash_message_logout"))
-                                 <div  class="alert fade in" style="margin-bottom: 00px;background:pink;">
-                                    <strong>{{session()->get("flash_message_logout")}}</strong> 
-
-                                 </div>
-                            
-                                <script>
-                                $(".alert").fadeTo(3000,500).slideUp(500,function(){$(".alert").slideUp(500);});
-                                </script>
-                        @endif
-                    </div>  
                     
-                        
-                       
-                    
-                          
-                    
-                
+        @if(session()->has("flash_message_logout"))
+            <div id="gritter-notice-wrapper">
+                <div id="gritter-item-1" class="gritter-item-wrapper" style="opacity: 0.7;">
+                   <div class="gritter-top"></div>
+                    <div class="gritter-item" style="background:blue">
+                     <div class="gritter-with-image">
+                        <span class="gritter-title">{{session()->get("flash_message_logout")}}</span>
+                      </div>
+                    <div style="clear:both"></div>
+                  </div>
+                <div class="gritter-bottom"></div>
+              </div>
+            </div>    
+        @endif
          
         <div class="container-login100" style="height: 600px;background-image: url('{{ asset('login172/images/bg-01.jpg')}}');">
                    
@@ -137,6 +135,8 @@
     <script src="{{asset('login172/js/main.js')}}"></script>
 
     <script src="{{asset('forgotpwd/vendor/tilt/tilt.jquery.min.js')}}"></script>
+    <script src="{{ asset('js/backend_js/jquery.gritter.min.js') }}"></script>
+    <script src="{{ asset('js/backend_js/matrix.form_validation.js') }}"></script>
   <script >
     $('.js-tilt').tilt({
       scale: 1.1

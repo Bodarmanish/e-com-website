@@ -61,7 +61,7 @@ class admincontroller extends Controller
     public function logout()
     {
         session::flush();
-        return redirect('/admin')->with('flash_message_logout','Logout Successful');
+        return redirect('/admin')->with('flash_message_logout','Logout Successfully!');
 
     }
     public function settings()
@@ -81,15 +81,15 @@ class admincontroller extends Controller
     {
             $data = $request->all();
             $current_password = $data['current_Pwd'];
-            $check_password = User::where(['id'])->first();
-            dd($check_password);
+            $check_password = User::where(['admin'=>'1'])->first();
+            
             if(Hash::check($current_password,$check_password->password))
             {
-                echo "true";die;
+                echo "true"; die;
             }
             else
             {
-                echo "false";die;
+                echo "false"; die;
             }
     }
     public function updatepassword(Request $request)
@@ -97,17 +97,20 @@ class admincontroller extends Controller
         if($request->isMethod('post'))
         {
             $data = $request->all();
+            
             $check_password = User::where(['email' => Auth::user()->email])->first();
+            //dd($check_password);
             $current_password = $data['current_Pwd'];
+
             if(Hash::check($current_password,$check_password->password))
             {
                 $password = bcrypt($data['new_Pwd']);
-                User::where('id')->Update(['password'=>$password]);
+                User::where(['email' => $check_password->email])->Update(['password'=>$password]);
                 return redirect('/admin/settings')->with('flash_message_update','Password Update Successful');
             }
             else
             {
-                return redirect('/admin/settings')->with('flash_message_update',' Current Password Incorrect ');
+                return redirect('/admin/settings')->with('flash_message_update',' Current Password Is Incorrect ');
             }
 
         }

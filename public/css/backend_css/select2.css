@@ -126,11 +126,13 @@ Version: 3.2 Timestamp: Mon Sep 10 10:38:04 PDT 2012
 }
 
 .select2-container .select2-choice div b {
-    background: url("../../select2.png") no-repeat 0 1px;
+    background-image: url(/image/bachend_image/select2.png); no-repeat 0 1px;
     display: block;
     width: 100%;
     height: 100%;
+    
 }
+
 
 .select2-search {
   display: inline-block;

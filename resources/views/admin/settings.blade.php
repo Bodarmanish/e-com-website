@@ -15,8 +15,8 @@
   </div>
    <div class="message1">
                         @if(session()->has("flash_message_update"))
-                                 <div  class="alert fade in" style="margin-bottom: 00px;background:pink;">
-                                    <strong>{{session()->get("flash_message_update")}}</strong> 
+                                 <div  class="alert fade in" style="margin-bottom: 00px;background:black;">
+                                    <span style="color:blue;">{{session()->get("flash_message_update")}} </span> 
 
                                  </div>
                             

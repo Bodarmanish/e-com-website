@@ -1,7 +1,19 @@
 
+$(document).ready(function () {          
+
+            setTimeout(function() {
+                $('#gritter-item-1').slideUp("slow");
+            }, 7000);
+});
+
+
+
+
+
 $(document).ready(function(){
 	$("#current_Pwd").focusout(function(){
 		var current_Pwd = $("#current_Pwd").val();
+		//alert(current_Pwd);
 		$.ajax({
 			type:'get',
 			url:'/admin/chkpass',
@@ -86,7 +98,47 @@ $(document).ready(function(){
 			$(element).parents('.control-group').addClass('success');
 		}
 	});
-	
+
+
+//add product validattion	
+$("#add_product").validate({
+		rules:{
+			name:{
+					required:true
+				 },
+			code:{
+					required:true,
+				 },
+			color:{
+					required:true,
+				  },
+			des:{
+					required:true,
+				},
+			price:{
+					required:true,
+					number:true,
+				},
+			category_id:{
+							required:true
+						},
+			image:{
+					required:true,
+				}	
+		},
+		errorClass: "help-inline",
+		errorElement: "span",
+		highlight:function(element, errorClass, validClass) {
+			$(element).parents('.control-group').addClass('error');
+		},
+		unhighlight: function(element, errorClass, validClass) {
+			$(element).parents('.control-group').removeClass('error');
+			$(element).parents('.control-group').addClass('success');
+		}
+	});
+
+
+
 	//edit category validattion
 	$("#edit_category").validate({
 		rules:{

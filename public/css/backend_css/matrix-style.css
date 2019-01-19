@@ -1086,7 +1086,7 @@ div.dataTables_wrapper .ui-widget-header {
 	opacity: 1; color:#fff; top:50%; transition:1s ease-out;
 }
 .line {
-	background: url(/image/bachend_image/line.png") repeat-x scroll 0 0 transparent;
+	 background-image: url(/image/bachend_image/line.png) repeat-x scroll 0 0 transparent;
 	display: block;
 	height: 8px;
 }
